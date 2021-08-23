@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Statistics from './statistics/Statistics.jsx';
+import FeedbackOptions from './feedbackOptions/FeedbackOptions.jsx';
 
 class App extends Component {
   state = {
@@ -22,28 +24,13 @@ class App extends Component {
     return (
       <div className="wrapper">
         <h1>Please leave feedback</h1>
-        <div className="buttons">
-          <button type="button" name="good" onClick={this.addGrade}>
-            Good
-          </button>
-          <button type="button" name="neutral" onClick={this.addGrade}>
-            Neutral
-          </button>
-          <button type="button" name="negative" onClick={this.addGrade}>
-            Negative
-          </button>
-        </div>
-        <h2>Statistics</h2>
-        {this.state.rate === undefined ? (
-          <p>No feedback given</p>
-        ) : (
-          <div className="grades">
-            <p>Good: {this.state.good}</p>
-            <p>Neutral: {this.state.neutral}</p>
-            <p>Negative: {this.state.negative}</p>
-            <p>Positive feedback: {this.state.rate}%</p>
-          </div>
-        )}
+        <FeedbackOptions onClickFunc={this.addGrade} />
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          negative={this.state.negative}
+          rate={this.state.rate}
+        />
       </div>
     );
   }

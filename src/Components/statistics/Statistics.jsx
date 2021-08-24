@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types';
+
 const Statistics = ({ good, neutral, negative, rate }) => {
   return (
     <div className="statistics">
       <h2>Statistics</h2>
-      {rate === undefined ? (
+      {rate === 0 ? (
         <p>No feedback given</p>
       ) : (
         <div className="grades">
@@ -17,3 +19,10 @@ const Statistics = ({ good, neutral, negative, rate }) => {
 };
 
 export default Statistics;
+
+Statistics.propTypes = {
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  negative: PropTypes.number,
+  rate: PropTypes.number,
+};

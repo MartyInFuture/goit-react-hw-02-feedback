@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const FeedbackOptions = ({ onClickFunc }) => {
   return (
     <div className="buttons">
@@ -15,3 +17,7 @@ const FeedbackOptions = ({ onClickFunc }) => {
 };
 
 export default FeedbackOptions;
+
+FeedbackOptions.propTypes = {
+  onClickFunc: PropTypes.func,
+};

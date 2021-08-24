@@ -7,16 +7,18 @@ class App extends Component {
     good: 0,
     neutral: 0,
     negative: 0,
+    rate: 0,
   };
 
   addGrade = (e) => {
-    console.log(e.target.name);
-    this.setState({
-      grade: (this.state[e.target.name] += 1),
-      rate:
-        (this.state.good /
-          (this.state.good + this.state.neutral + this.state.negative)) *
-        100,
+    this.setState((prevState) => {
+      return {
+        [e.target.name]: (prevState[e.target.name] += 1),
+        rate:
+          (this.state.good /
+            (this.state.good + this.state.neutral + this.state.negative)) *
+          100,
+      };
     });
   };
 

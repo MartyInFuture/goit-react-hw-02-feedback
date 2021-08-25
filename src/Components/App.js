@@ -11,9 +11,10 @@ class App extends Component {
   };
 
   addGrade = (e) => {
+    const { name } = e.target;
     this.setState((prevState) => {
       return {
-        [e.target.name]: (prevState[e.target.name] += 1),
+        [name]: (prevState[name] += 1),
         rate:
           (this.state.good /
             (this.state.good + this.state.neutral + this.state.negative)) *
@@ -23,15 +24,16 @@ class App extends Component {
   };
 
   render() {
+    const { good, neutral, negative, rate } = this.state;
     return (
       <div className="wrapper">
         <h1>Please leave feedback</h1>
         <FeedbackOptions onClickFunc={this.addGrade} />
         <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          negative={this.state.negative}
-          rate={this.state.rate}
+          good={good}
+          neutral={neutral}
+          negative={negative}
+          rate={rate}
         />
       </div>
     );

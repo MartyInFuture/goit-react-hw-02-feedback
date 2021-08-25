@@ -7,7 +7,6 @@ class App extends Component {
     good: 0,
     neutral: 0,
     negative: 0,
-    rate: 0,
   };
 
   addGrade = (e) => {
@@ -15,16 +14,18 @@ class App extends Component {
     this.setState((prevState) => {
       return {
         [name]: (prevState[name] += 1),
-        rate:
+        total: this.state.good + this.state.negative + this.state.neutral,
+        rate: Math.floor(
           (this.state.good /
             (this.state.good + this.state.neutral + this.state.negative)) *
-          100,
+            100
+        ),
       };
     });
   };
 
   render() {
-    const { good, neutral, negative, rate } = this.state;
+    const { good, neutral, negative, rate = 0, total = 0 } = this.state;
     return (
       <div className="wrapper">
         <h1>Please leave feedback</h1>
@@ -34,6 +35,7 @@ class App extends Component {
           neutral={neutral}
           negative={negative}
           rate={rate}
+          total={total}
         />
       </div>
     );
